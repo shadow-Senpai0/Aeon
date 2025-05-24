@@ -32,34 +32,115 @@ Aeon is a streamlined and feature-rich bot designed for efficient deployment and
     <summary>Installing requirements</summary>
 
 - Clone this repo:
-
-git clone https://github.com/weebzone/WZML-X mirrorbot/ && cd mirrorbot
+'''
+git clone https://github.com/shadow-Senpai0/Aeon mirrorbot/ && cd mirrorbot
+'''
 - For Debian based distros
-
+'''
 sudo apt install python3 python3-pip
+'''
 Install Docker by following the [official Docker docs](https://docs.docker.com/engine/install/debian/)
 
 - For Arch and it's derivatives:
 
 sudo pacman -S docker python
 - Install dependencies for running setup scripts:
-
-pip3 install -r requirements-cli.txt
+'''
+pip3 install -r requirements.txt
+'''
     
   </details></li>
   <li><details>
     <summary>Setting up config file</summary>
 
-    
+'''   
 cp config_sample.env config.env
+'''
 - Remove the first line saying:
-
+'''
 _____REMOVE_THIS_LINE_____=True
+'''
 Fill up rest of the fields. Meaning of each field is discussed below. NOTE: All values must be filled between quotes, even if it's Int, Bool or List.
 
   </details></li>
   <li><details>
     <summary>Build And Run the Docker Image</summary>
+Make sure you still mount the app folder and installed the docker from official documentation.
+
+- There are two methods to build and run the docker:
+  1. Using official docker commands.
+  2. Using docker-compose. (Recommended)
+
+------
+
+#### Build And Run The Docker Image Using Official Docker Commands
+
+- Start Docker daemon (SKIP if already running, mostly you don't need to do this):
+
+sudo dockerd
+- Build Docker image:
+'''
+sudo docker build . -t leechx
+'''
+- Run the image:
+'''
+sudo docker run -p 80:80 -p 8080:8080 leechx
+'''
+- To stop the running image:
+sudo docker ps
+```
+'''
+sudo docker stop id
+'''
+----
+
+#### Build And Run The Docker Image Using docker-compose
+
+**NOTE**: If you want to use ports other than 80 and 8080 for torrent file selection and rclone serve respectively, change it in [docker-compose.yml](https://github.com/weebzone/WZML-X/blob/master/docker-compose.yml) also.
+
+- Install docker-compose
+
+sudo apt install docker-compose
+
+- Build and run Docker image or to view current running image:
+
+sudo docker-compose up
+
+- After editing files with nano for example (nano start.sh):
+
+sudo docker-compose up --build
+
+- To stop the running image:
+
+sudo docker-compose stop
+
+- To run the image:
+
+sudo docker-compose start
+
+- To get latest log from already running image (after mounting the folder):
+
+sudo docker-compose up
+
+- Tutorial video from Tortoolkit repo for docker-compose and checking ports
+
+<p><a href="https://youtu.be/c8_TU1sPK08"> <img src="https://img.shields.io/badge/See%20Video-black?style=for-the-badge&logo=YouTube" width="160"/></a></p>
+
+------
+
+#### Docker Notes
+
+**IMPORTANT NOTES**:
+
+1. Set `BASE_URL_PORT` and `RCLONE_SERVE_PORT` variables to any port you want to use. Default is `80` and `8080` respectively.
+2. You should stop the running image before deleting the container and you should delete the container before the image.
+3. To delete the container (this will not affect on the image):
+
+sudo docker container prune
+
+4. To delete the images:
+
+sudo docker image prune -a
 ## Deployment Instructions (Heroku)
 
 Follow these steps to deploy Aeon to Heroku:
