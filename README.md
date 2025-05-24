@@ -15,7 +15,51 @@ Aeon is a streamlined and feature-rich bot designed for efficient deployment and
 - **Enhanced Capabilities**: Integrates features from multiple sources to provide a versatile bot experience.
 
 ---
+--- 
+## 🗄 *Deployment Guide for vps*
 
+<details>
+  <summary><b>View All Steps</b> <sup><kbd>Click Here</kbd></sup></summary>
+    <ol><li><details>
+      <summary>Prerequisites</summary>
+
+- Tutorial Video from A to Z:</li>
+  - Thanks to [Wiszky](https://github.com/vishnoe115)</li>
+
+<p><a href="https://youtu.be/IUmq1paCiHI"> <img src="https://img.shields.io/badge/See%20Video-black?style=for-the-badge&logo=YouTube" width="160"/></a></p>
+  </details></li>
+  <li><details>
+    <summary>Installing requirements</summary>
+
+- Clone this repo:
+
+git clone https://github.com/weebzone/WZML-X mirrorbot/ && cd mirrorbot
+- For Debian based distros
+
+sudo apt install python3 python3-pip
+Install Docker by following the [official Docker docs](https://docs.docker.com/engine/install/debian/)
+
+- For Arch and it's derivatives:
+
+sudo pacman -S docker python
+- Install dependencies for running setup scripts:
+
+pip3 install -r requirements-cli.txt
+    
+  </details></li>
+  <li><details>
+    <summary>Setting up config file</summary>
+
+    
+cp config_sample.env config.env
+- Remove the first line saying:
+
+_____REMOVE_THIS_LINE_____=True
+Fill up rest of the fields. Meaning of each field is discussed below. NOTE: All values must be filled between quotes, even if it's Int, Bool or List.
+
+  </details></li>
+  <li><details>
+    <summary>Build And Run the Docker Image</summary>
 ## Deployment Instructions (Heroku)
 
 Follow these steps to deploy Aeon to Heroku:
