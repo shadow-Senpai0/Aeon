@@ -75,7 +75,7 @@ async def error_check(message):
         if token_msg:
             msg.append(token_msg)
 
-   ''' if await nsfw_precheck(message):
+   """if await nsfw_precheck(message):
         msg.append("NSFW detected")
 
     if msg:
@@ -84,13 +84,13 @@ async def error_check(message):
         final_msg = f"Hey, <b>{tag}</b>!\n"
         for i, m in enumerate(msg, 1):
             final_msg += f"\n<blockquote><b>{i}</b>: {m}</blockquote>"
-
+    """
         if button:
             button = button.build_menu(2)
         return final_msg, button
 
     return None, None
-'''
+
 
 async def get_chat_info(channel_id):
     try:
@@ -99,8 +99,8 @@ async def get_chat_info(channel_id):
         LOGGER.error(f"{e.NAME}: {e.MESSAGE} for {channel_id}")
         return None
 
-
-r"""def is_nsfw(text):
+"""
+def is_nsfw(text):
     pattern = (
         r"(?:^|\W|_)(?:"
         + "|".join(escape(keyword) for keyword in nsfw_keywords)
