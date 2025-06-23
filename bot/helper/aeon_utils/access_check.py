@@ -84,11 +84,11 @@ async def error_check(message):
         final_msg = f"Hey, <b>{tag}</b>!\n"
         for i, m in enumerate(msg, 1):
             final_msg += f"\n<blockquote><b>{i}</b>: {m}</blockquote>"
-    """
+    
         if button:
             button = button.build_menu(2)
         return final_msg, button
-
+    """
     return None, None
 
 
