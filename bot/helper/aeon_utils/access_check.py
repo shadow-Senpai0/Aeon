@@ -75,7 +75,7 @@ async def error_check(message):
         if token_msg:
             msg.append(token_msg)
 
-    if await nsfw_precheck(message):
+   ''' if await nsfw_precheck(message):
         msg.append("NSFW detected")
 
     if msg:
@@ -90,7 +90,7 @@ async def error_check(message):
         return final_msg, button
 
     return None, None
-
+'''
 
 async def get_chat_info(channel_id):
     try:
