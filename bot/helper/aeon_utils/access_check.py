@@ -102,7 +102,7 @@ async def get_chat_info(channel_id):
         return None
 
 
-def is_nsfw(text):
+'''def is_nsfw(text):
     pattern = (
         r"(?:^|\W|_)(?:"
         + "|".join(escape(keyword) for keyword in nsfw_keywords)
@@ -143,7 +143,7 @@ async def nsfw_precheck(message):
         for attr in ["caption", "text"]
         if hasattr(reply_to, attr) and getattr(reply_to, attr)
     )
-
+'''
 
 async def check_is_paid(chat, uid):
     try:
