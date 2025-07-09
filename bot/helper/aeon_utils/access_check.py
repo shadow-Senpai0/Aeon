@@ -75,22 +75,22 @@ async def error_check(message):
         if token_msg:
             msg.append(token_msg)
 
-   """if await nsfw_precheck(message):
-        msg.append("NSFW detected")
+   #if await nsfw_precheck(message):
+     #   msg.append("NSFW detected")
 
-    if msg:
-        username = message.from_user.username
-        tag = f"@{username}" if username else message.from_user.mention
-        final_msg = f"Hey, <b>{tag}</b>!\n"
-        for i, m in enumerate(msg, 1):
-            final_msg += f"\n<blockquote><b>{i}</b>: {m}</blockquote>"
+   # if msg:
+   #     username = message.from_user.username
+     #   tag = f"@{username}" if username else message.from_user.mention
+     #   final_msg = f"Hey, <b>{tag}</b>!\n"
+     #   for i, m in enumerate(msg, 1):
+       #     final_msg += f"\n<blockquote><b>{i}</b>: {m}</blockquote>"
     
-        if button:
-            button = button.build_menu(2)
-        return final_msg, button
+      #  if button:
+      #      button = button.build_menu(2)
+      #  return final_msg, button
     
-    return None, None
-"""
+   # return None, None
+
 
 async def get_chat_info(channel_id):
     try:
@@ -99,49 +99,49 @@ async def get_chat_info(channel_id):
         LOGGER.error(f"{e.NAME}: {e.MESSAGE} for {channel_id}")
         return None
 
-"""
-def is_nsfw(text):
-    pattern = (
-        r"(?:^|\W|_)(?:"
-        + "|".join(escape(keyword) for keyword in nsfw_keywords)
-        + r")(?:$|\W|_)"
-    )
-    return bool(search(pattern, text, flags=IGNORECASE))
+
+#def is_nsfw(text):
+ #   pattern = (
+   #     r"(?:^|\W|_)(?:"
+     #   + "|".join(escape(keyword) for keyword in nsfw_keywords)
+     #   + r")(?:$|\W|_)"
+ #   )
+   # return bool(search(pattern, text, flags=IGNORECASE))
 
 
-def is_nsfw_data(data):
-    if isinstance(data, list):
-        return any(
-            is_nsfw(item.get("name", ""))
-            if isinstance(item, dict)
-            else is_nsfw(item)
-            for item in data
-        )
-    if isinstance(data, dict):
-        return any(is_nsfw(item["filename"]) for item in data.get("contents", []))
-    return False
+#def is_nsfw_data(data):
+    #if isinstance(data, list):
+    #    return any(
+    #        is_nsfw(item.get("name", ""))
+       #     if isinstance(item, dict)
+        #    else is_nsfw(item)
+        #    for item in data
+ #       )
+  #  if isinstance(data, dict):
+  #      return any(is_nsfw(item["filename"]) for item in data.get("contents", []))
+   # return False
 
 
-async def nsfw_precheck(message):
-    if is_nsfw(message.text):
-        return True
+#async def nsfw_precheck(message):
+  #  if is_nsfw(message.text):
+   #     return True
 
-    reply_to = message.reply_to_message
-    if not reply_to:
-        return False
+ #   reply_to = message.reply_to_message
+  #  if not reply_to:
+  #      return False
 
-    for attr in ["document", "video"]:
-        if hasattr(reply_to, attr) and getattr(reply_to, attr):
-            file_name = getattr(reply_to, attr).file_name
-            if file_name and is_nsfw(file_name):
-                return True
+   # for attr in ["document", "video"]:
+    #    if hasattr(reply_to, attr) and getattr(reply_to, attr):
+  #          file_name = getattr(reply_to, attr).file_name
+   #         if file_name and is_nsfw(file_name):
+   #             return True
 
-    return any(
-        is_nsfw(getattr(reply_to, attr))
-        for attr in ["caption", "text"]
-        if hasattr(reply_to, attr) and getattr(reply_to, attr)
-    )
-"""
+ #   return any(
+ #       is_nsfw(getattr(reply_to, attr))
+  #      for attr in ["caption", "text"]
+  #      if hasattr(reply_to, attr) and getattr(reply_to, attr)
+  #  )
+
 
 
 async def check_is_paid(chat, uid):
@@ -194,4 +194,4 @@ async def token_check(user_id, button=None):
 
         return (msg + f"\n<b>It will expire after {time_str}</b>!"), button
 
-    return None, button
+    return None
