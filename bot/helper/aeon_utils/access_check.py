@@ -88,9 +88,9 @@ async def error_check(message):
         if button:
             button = button.build_menu(2)
         return final_msg, button
-    """
+    
     return None, None
-
+"""
 
 async def get_chat_info(channel_id):
     try:
